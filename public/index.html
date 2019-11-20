@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chartz</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <p> Hello </p>
+    <form @submit.prevent="onSubmit" enctype="multipart/form-data">
+      <div class="fields">
+        <label>Upload File</label><br/>
+        <input id="csv" type="file" ref="file" @change="onSelect"/>
+      </div>
+      <div class="fields">
+          <button>Submit</button>
+      </div>
+      <div class="message">
+        <h5>{{message}}</h5>
+      </div>
+    </form>
+
+    <div>
+      <h4> UPloaded: </h4>
+      <button v-on:click="getList()"> get list </button>
+      <p>{{uploadedNames}}</p>
+      <button v-on:click="getData('baby.csv')"> get data </button>
+      <p>{{data}}</p>
+
+      <div>
+        <div id="regions_div" style="width: 900px; height: 500px;"></div>
+      </div>
+
+  </div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="javascripts/script.js"></script>
+</body>
+
+</html>
