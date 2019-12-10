@@ -1,42 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Chartz</title>
+  <title>Chartz</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 
 <body>
 
+  <div class="header banner">
+    <p class="charts">CHART<em class="emphasis">S</em></p>
+  </div>
+
+  <div class="space"></div>
+
   <div id="app">
-    <p> Hello </p>
-    <form @submit.prevent="onSubmit" enctype="multipart/form-data">
-      <div class="fields">
-        <label>Upload File</label><br/>
-        <input id="csv" type="file" ref="file" @change="onSelect"/>
-      </div>
-      <div class="fields">
-          <button>Submit</button>
-      </div>
-      <div class="message">
-        <h5>{{message}}</h5>
-      </div>
-    </form>
 
-    <div>
-      <h4> UPloaded: </h4>
-      <button v-on:click="getList()"> get list </button>
-      <p>{{uploadedNames}}</p>
-      <button v-on:click="getData('baby.csv')"> get data </button>
-      <p>{{data}}</p>
+    <div class="menu">
 
-      <div>
-        <div id="regions_div" style="width: 900px; height: 500px;"></div>
+      <div class="menu_panel">
+        <form @submit.prevent="onSubmit" enctype="multipart/form-data">
+          <h4 class="menu_panel_title">Upload Csv</h4>
+          <div>
+            <p>Name: <input id="name" type="text" v-model="name"/> </p>
+          </div>
+          <div class="fields">
+            <input id="csv" type="file" ref="file" @change="onSelect"/>
+          </div>
+          <div class="small_space"></div>
+          <div class="message">
+            <p><button class="action_button" >Submit</button>   {{message}}</p>
+          </div>
+        </form>
+      </div>
+
+      <div class="menu_panel">
+        <h4 class="menu_panel_title"> Choose a dataset: </h4>
+        <select v-model="selectedDataset">
+          <option disabled value="">Select a dataset</option>
+          <option v-for="dataset in uploadedNames">{{dataset}}</option>
+        </select>
+        <div class="small_space"></div>
+        <p><button  class="action_button" v-on:click="getData()">Use Dataset </button></p>
+      </div>
+
+      <div class="menu_panel">
+        <h4 class="menu_panel_title"> Choose a chart: </h4>
+        <select v-model="chartType">
+          <option disabled value="">Select a chart type</option>
+          <option v-for="type in chartTypes">{{type}}</option>
+        </select>
+        <div class="small_space"></div>
+        <p><button  class="action_button" v-on:click="makeChart()">Make Chart</button></p>
+      </div>
+
+    </div>
+
+      <div class="content">
+
+        <div class="space"></div>
+        <button class="action_button" v-if="drawn" v-on:click="saveChartAsPdf()">Save Chart as PDF</button>
+        <button class="action_button"  v-if="drawn" v-on:click="saveTableAsPdf()">Save Table as PDF</button>
+        <div class="small_space"></div>
+
+        <h3 v-if="drawn">{{ selectedDataset }}</h3>
+
+        <div id="chart_div" style="width: 900px; height: 500px;"></div>
+        <div class="space"></div>
+        <div id="table_div" style="width: 900px; height: 500px;"></div>
       </div>
 
   </div>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <div class="footer banner">
+    <p>Checkout the code on GITHUB: <a src="www.google.com">github.</a></p>
+  </div>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
   <script src="javascripts/script.js"></script>
 </body>
 

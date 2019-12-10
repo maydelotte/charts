@@ -16,6 +16,7 @@ const Csv = mongoose.model('Csv', csvSchema);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log("HELLO");
   res.render('../public/index.html');
 });
 

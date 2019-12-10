@@ -1,8 +1,95 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  font-size: 1.5vw;
 }
-
 a {
   color: #00B7FF;
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.banner {
+  padding: 10px;
+  margin: 0;
+}
+.header {
+  background-color: #3E3E43;
+  color: white;
+}
+.footer {
+  background-color: #3E3E43;
+  color: white;
+  padding: 1vw;
+}
+.menu {
+  background-color: #3E3E43;
+  height: 23vh;
+  color: white;
+}
+.menu_panel {
+  float: left;
+  width: 28vw;
+  margin: 0;
+  margin-left: 2.5vw;
+  background-color: rgb(0, 0, 0, 0.5);
+  padding: 1vw;
+}
+.content {
+   clear: both;
+   padding: 0 calc( (100vw - 900px) / 2);
+}
+
+.charts {
+  font-weight: bold;
+  font-size: 5vw;
+  padding-left: 3vw;
+}
+.emphasis {
+  color: #F3963A;
+  font-style: italic;
+}
+
+.menu_panel_title {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 0.5vw;
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+
+.action_button {
+	box-shadow:inset 0px 34px 0px -15px #f3973a;
+	background-color:#e87a25;
+	border:1px solid #f3973a;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+}
+.action_button:hover {
+	background-color:#e3731d;
+}
+.action_button:active {
+	position:relative;
+	top:1px;
+}
+
+
+.small_space {
+  width: 1px;
+  height: 1vh;
+}
+.space {
+  width: 1px;
+  height: 5vh;
 }
